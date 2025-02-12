@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/pages/random_task.dart';
 import 'package:flutter_application_2/pages/to_do_list.dart';
 
 class HomePage extends StatelessWidget {
@@ -21,9 +22,13 @@ class HomePage extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Acción para obtener una tarea aleatoria
+                // Acción para obtener una frase aleatoria
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => RandomPhrase()),
+                );
               },
-              child: const Text('Tarea aleatoria'),
+              child: const Text('Inspiración Diaria'),
             ),
             const SizedBox(height: 10),
             ElevatedButton(
