@@ -76,7 +76,7 @@ class _RandomPhraseState extends State<RandomPhrase> {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _updateTask,
-              child: const Text('Obtener otra tarea'),
+              child: const Text('Obtener otra frase'),
             ),
           ],
         ),

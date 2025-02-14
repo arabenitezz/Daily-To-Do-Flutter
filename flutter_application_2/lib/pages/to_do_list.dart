@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/pages/to_do_utils.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
-// import 'dart:convert';
+import '/pages/to_do_utils.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 
 class ToDoWidget extends StatefulWidget {
   const ToDoWidget({super.key});
@@ -17,41 +17,41 @@ class _ToDoWidgetState extends State<ToDoWidget> {
   @override
   void initState() {
     super.initState();
-    // loadTasks();
+    loadTasks();
   }
 
-// // Cargar tareas guardadas
-// Future<void> loadTasks() async {
-//   final prefs = await SharedPreferences.getInstance();
-//   setState(() {
-//     String? tasksJson = prefs.getString('tasks');
-//     if (tasksJson != null) {
-//       toDoList = json.decode(tasksJson);
-//     } else {
-//       toDoList = []; // Inicializar lista vacía si no hay datos guardados
-//     }
-//   });
-// }
+// Cargar tareas guardadas
+Future<void> loadTasks() async {
+  final prefs = await SharedPreferences.getInstance();
+  setState(() {
+    String? tasksJson = prefs.getString('tasks');
+    if (tasksJson != null) {
+      toDoList = json.decode(tasksJson);
+    } else {
+      toDoList = []; // Inicializar lista vacía si no hay datos guardados
+    }
+  });
+}
 
 
-//   // Guardar tareas en SharedPreferences
-//   Future<void> saveTasks() async {
-//     final prefs = await SharedPreferences.getInstance();
-//     String tasksJson = json.encode(toDoList);
-//     await prefs.setString('tasks', tasksJson);
-//   }
+  // Guardar tareas en SharedPreferences
+  Future<void> saveTasks() async {
+    final prefs = await SharedPreferences.getInstance();
+    String tasksJson = json.encode(toDoList);
+    await prefs.setString('tasks', tasksJson);
+  }
 
   void checkBoxChanged(int index) {
     setState(() {
       toDoList[index][1] = !toDoList[index][1];
-      // saveTasks(); // Guardar después de cambiar el estado
+      saveTasks(); // Guardar después de cambiar el estado
     });
   }
 
   void deleteTask(int index) {
     setState(() {
       toDoList.removeAt(index);
-      // saveTasks(); // Guardar después de eliminar
+      saveTasks(); // Guardar después de eliminar
     });
   }
 
@@ -60,7 +60,7 @@ class _ToDoWidgetState extends State<ToDoWidget> {
       setState(() {
         toDoList.add([_controller.text, false]);
         _controller.clear();
-        // saveTasks(); // Guardar después de agregar
+        saveTasks(); // Guardar después de agregar
       });
     }
   }

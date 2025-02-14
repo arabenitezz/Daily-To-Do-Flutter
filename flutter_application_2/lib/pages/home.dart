@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/pages/random_task.dart';
-import 'package:flutter_application_2/pages/to_do_list.dart';
+import '/pages/random_phrase.dart';
+import '/pages/to_do_list.dart';
+
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -22,7 +24,6 @@ class HomePage extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Acción para obtener una frase aleatoria
                 Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => RandomPhrase()),
@@ -32,15 +33,15 @@ class HomePage extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             ElevatedButton(
-              onPressed: () {
-                // Acción para ir a la lista de tareas
-                Navigator.push(
+              onPressed: () async {
+                await Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ToDoWidget()),
-                  );
+                  MaterialPageRoute(builder: (context) => const ToDoWidget()),
+                );
               },
               child: const Text('Lista de tareas'),
             ),
+
           ],
         ),
       ),
